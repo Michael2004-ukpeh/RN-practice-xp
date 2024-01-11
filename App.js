@@ -4,6 +4,8 @@ import { StyleSheet, Text, View } from 'react-native';
 import { useFonts } from 'expo-font';
 import * as SplashScreen from 'expo-splash-screen';
 import Login from './app/screens/login/Login';
+import { ClerkProvider, SignedIn, SignedOut } from '@clerk/clerk-expo';
+
 SplashScreen.preventAutoHideAsync();
 export default function App() {
   const [fontsLoaded] = useFonts({
@@ -22,10 +24,17 @@ export default function App() {
     return null;
   }
   return (
-    <View style={styles.container} onLayout={onLayoutRootView}>
-      <Login />
-      <StatusBar style="auto" />
-    </View>
+    <ClerkProvider publishableKey={process.env.EXPO_PUBLIC_CLERK_PUBLSHER_KEYy}>
+      <View style={styles.container} onLayout={onLayoutRootView}>
+        <StatusBar style="auto" />
+        <SignedIn>
+          <Text>Signed IN</Text>
+        </SignedIn>
+        <SignedOut>
+          <Login />
+        </SignedOut>
+      </View>
+    </ClerkProvider>
   );
 }
 
