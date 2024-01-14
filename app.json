@@ -1,10 +1,18 @@
 {
   "expo": {
-    "name": "EV-Charging-Station-App",
-    "slug": "EV-Charging-Station-App",
+    "name": "Chargspot",
+    "slug": "Chargspot",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
+    "plugins": [
+      [
+        "expo-location",
+        {
+          "locationAlwaysAndWhenInUsePermission": "Allow Chargspot to use your location."
+        }
+      ]
+    ],
     "userInterfaceStyle": "light",
     "splash": {
       "image": "./assets/splash.png",
